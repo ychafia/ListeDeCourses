@@ -18,3 +18,4 @@ git add --all
 git status
 git commit -m "second commit"
 git push -u origin master
+git log ! voir lensemble des commits
