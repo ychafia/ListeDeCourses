@@ -15,6 +15,7 @@ import fr.youness.mescourses.bean.Element;
 import fr.youness.mescourses.dao.ElementImpl;
 
 
+
 @Path("/json/mescourses")
 public class MesCoursesService {
 	@GET
