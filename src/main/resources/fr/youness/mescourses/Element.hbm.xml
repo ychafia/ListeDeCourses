@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="fr.youness.mescourses.bean.Element" table="tb_element" catalog="todoapi">
+        <id name="idElement" type="integer">
+            <column name="ID_ELEMENT" />
+            <generator class="increment" />
+        </id>
+        <property name="nomElement" type="string">
+            <column name="NOM_ELEMENT" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
