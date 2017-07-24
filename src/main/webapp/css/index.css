@@ -1,0 +1,12 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #F4F5F5;
+}
+
+#sectionprincipale{
+	border-style: solid;
+	margin-top: 15%;
+	margin-left: 10%;
+	margin-right:10%
+}
