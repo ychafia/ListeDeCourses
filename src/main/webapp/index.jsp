@@ -12,6 +12,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/index.css">
 	
+	
 	<body ng-app="myApp" ng-controller="myCtrl">
 		<section id="sectionprincipale">
 			<h2>Liste de courses</h2>
