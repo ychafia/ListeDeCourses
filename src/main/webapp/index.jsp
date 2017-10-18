@@ -14,8 +14,10 @@
 	
 	
 	<body ng-app="myApp" ng-controller="myCtrl">
+		<section id="sectiontitre">
+			Liste de courses
+		</section>
 		<section id="sectionprincipale">
-			<h2>Liste de courses</h2>
 			<form ng-submit="ajouterElement()">
 				<input type="text" ng-model="element_libelle" size="50" placeholder="Saisie ici qlqc">
 				<input type="submit" value="Ajouter">
@@ -26,6 +28,7 @@
 			</div>
 			<!--<p><button ng-click="remove()">Remove marked</button></p>-->
 		</section>
+	</body>
 	<script>
 		var app = angular.module("myApp", []);
 		app.controller('myCtrl', function($scope, $http) {
@@ -67,6 +70,4 @@
 			};
 		});
 	</script>
-
-	</body>
 </html>
