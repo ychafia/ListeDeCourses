@@ -19,55 +19,17 @@
 		</section>
 		<section id="sectionprincipale">
 			<form ng-submit="ajouterElement()">
-				<input type="text" ng-model="element_libelle" size="50" placeholder="Saisie ici qlqc">
-				<input type="submit" value="Ajouter">
+				<input type="text" id="elementid" ng-model="element_libelle" size="50" placeholder="...." maxlength="30">
 			</form>
 			<br>
 			<div ng-repeat="x in elements">
-				<span ng-bind="x.nomElement"></span><a ng-click="supprimerElement(x.idElement)"> Supprimer</a>
+				
+				<img id="imgdelete" ng-click="supprimerElement(x.idElement)" src="images/delete.png" />
+				<label>{{x.nomElement}}</label>
+				<img id="imgdone" ng-click="validerElement(x.idElement)" src="images/done.png" />
+				
 			</div>
-			<!--<p><button ng-click="remove()">Remove marked</button></p>-->
 		</section>
 	</body>
-	<script>
-		var app = angular.module("myApp", []);
-		app.controller('myCtrl', function($scope, $http) {
-			console.log("Je suis pret");
-			$http.get("http://localhost:8080/MesCoursesAPI/rest/json/mescourses/get").then(function(response) {
-				$scope.elements = response.data;
-				console.log($scope.elements);
-				console.log("Succes");
-			});
-			$scope.ajouterElement = function(){
-				//Construction de l'objet à poster
-				var obj_elt = {
-					idElement : $scope.idElement,
-					nomElement : $scope.element_libelle 
-				};
-				//poster l'element
-				var res = $http.post('http://localhost:8080/MesCoursesAPI/rest/json/mescourses/post', obj_elt);
-				res.success(function(data, status, headers, config) {
-					$scope.elements = data;
-					$scope.element_libelle = '';
-					console.log('Ajouté avec succès');
-				});
-				res.error(function(data, status, headers, config) {
-					console.log( "Erreur lors de l'ajout de l'element: " + JSON.stringify({data: data}));
-					alert("Erreur grave : l'élément n'a pas été ajouté.");
-				});
-			};
-			$scope.supprimerElement = function(idSupp){
-				console.log(idSupp);
-				var res = $http.post('http://localhost:8080/MesCoursesAPI/rest/json/mescourses/supprimer', idSupp);
-				res.success(function(data, status, headers, config) {
-					$scope.elements = data;
-					console.log('Suppression avec succès');
-				});
-				res.error(function(data, status, headers, config) {
-					console.log( "Erreur lors de l'ajout de l'element: " + JSON.stringify({data: data}));
-					alert("Erreur grave : l'élément n'a pas été ajouté.");
-				});
-			};
-		});
-	</script>
+	<script src="js/app.js"></script>
 </html>
