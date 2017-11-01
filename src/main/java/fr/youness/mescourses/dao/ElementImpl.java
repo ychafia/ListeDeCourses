@@ -36,5 +36,19 @@ public class ElementImpl implements IElementDAO {
         session.clear();
         session.close();	
 	}
-
+	@Override
+	public void mettreAjour(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();	
+		session.beginTransaction();
+		Element elt = (Element) session.load(Element.class, new Integer(id));
+		if(elt.equals("true")){
+			elt.setComplete("false");
+		}else{
+			elt.setComplete("true");
+		}
+        session.update(elt);
+        session.getTransaction().commit();
+        session.clear();
+        session.close();	
+	}
 }

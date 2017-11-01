@@ -11,25 +11,30 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/index.css">
-	
+	<link rel="stylesheet" href="css/toggle.css">
 	
 	<body ng-app="myApp" ng-controller="myCtrl">
 		<section id="sectiontitre">
 			Liste de courses
 		</section>
 		<section id="sectionprincipale">
-			<form ng-submit="ajouterElement()">
-				<input type="text" id="elementid" ng-model="element_libelle" size="50" placeholder="...." maxlength="30">
-			</form>
-			<br>
-			<div ng-repeat="x in elements">
-				
-				<img id="imgdelete" ng-click="supprimerElement(x.idElement)" src="images/delete.png" />
-				<label>{{x.nomElement}}</label>
-				<img id="imgdone" ng-click="validerElement(x.idElement)" src="images/done.png" />
-				
-			</div>
-		</section>
+               <form ng-submit="ajouterElement()">
+                      <input type="text" id="elementid" ng-model="element_libelle" size="50" placeholder="...." maxlength="30">
+               </form>
+               <br>
+               <table>
+                      <tr ng-repeat="x in elements">
+                             <td id="celluleCaseACocher" >
+                                   <label class="switch">
+                                     <input type="checkbox" ng-checked="{{x.complete}}" ng-click="validerElement(x)">
+                                     <span class="slider round"></span>
+                                   </label>
+                             </td>
+                             <td id="celluleLibelle"><label>{{x.nomElement}}</label></td>
+                             <td id="celluleSupprimer"><img id="imgdelete" ng-click="supprimerElement(x.idElement)" src="images/delete.png" /></td>
+                      </tr>
+               </table>
+         </section>
 	</body>
 	<script src="js/app.js"></script>
 </html>

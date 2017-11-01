@@ -11,5 +11,8 @@
         <property name="nomElement" type="string">
             <column name="NOM_ELEMENT" length="20" not-null="true" />
         </property>
+        <property name="complete" type="string">
+            <column name="COMPLETE" length="20" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

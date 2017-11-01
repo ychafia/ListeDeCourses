@@ -8,4 +8,5 @@ public interface IElementDAO {
 	public List<Element> consulter();
 	public void ajouterElement(Element elt);
 	public void supprimer(int id);
+	public void mettreAjour(int id);
 }

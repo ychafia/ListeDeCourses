@@ -36,6 +36,7 @@ public class MesCoursesService {
 		Element elt_tmp = new Element();
 		elt_tmp.setIdElement(elt.getIdElement());
 	 	elt_tmp.setNomElement(elt.getNomElement());
+	 	elt_tmp.setComplete(elt.getComplete());
 	 	List liste_courses = new ArrayList<Element>();
 	 	ElementImpl dao_courses = new ElementImpl();
 	 	dao_courses.ajouterElement(elt_tmp);
@@ -53,6 +54,18 @@ public class MesCoursesService {
 		e.setIdElement(idSupp);
 		ElementImpl dao_courses = new ElementImpl();
 		dao_courses.supprimer(idSupp);
+		liste_courses = dao_courses.consulter();
+		return Response.status(200).entity(liste_courses).build();
+	}
+	
+	@POST
+	@Path("/maj")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response mettreAjour(int idSupp) {
+		System.out.println(idSupp);
+		List liste_courses = new ArrayList<Element>();
+		ElementImpl dao_courses = new ElementImpl();
+		dao_courses.mettreAjour(idSupp);
 		liste_courses = dao_courses.consulter();
 		return Response.status(200).entity(liste_courses).build();
 	}
