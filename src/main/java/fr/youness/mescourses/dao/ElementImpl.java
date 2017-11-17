@@ -41,7 +41,7 @@ public class ElementImpl implements IElementDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();	
 		session.beginTransaction();
 		Element elt = (Element) session.load(Element.class, new Integer(id));
-		if(elt.equals("true")){
+		if(elt.getComplete().equals("true")){
 			elt.setComplete("false");
 		}else{
 			elt.setComplete("true");

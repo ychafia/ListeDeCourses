@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -21,18 +24,23 @@ public class MesCoursesService {
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List getListe() {
+	public Response getListe() {
 		List liste_courses = new ArrayList<Element>();
 		ElementImpl dao_courses = new ElementImpl();
 		liste_courses = dao_courses.consulter();
-		return liste_courses;
+		return Response.ok().entity(liste_courses)
+	            .header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+	             header("Access-Control-Allow-Credentials", "true").
+	             header("Access-Control-Max-Age", "3600").
+	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();    
 	}
 	
-	@POST
-    @Path("/post")
+	@PUT
+    @Path("/ajouter")
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response postPerson(Element elt) throws Exception{
-		System.out.println("Début du POST serveur ");
+    public Response ajouterElement(Element elt) throws Exception{
+		System.out.println("DÃ©but du POST serveur ");
 		Element elt_tmp = new Element();
 		elt_tmp.setIdElement(elt.getIdElement());
 	 	elt_tmp.setNomElement(elt.getNomElement());
@@ -41,25 +49,59 @@ public class MesCoursesService {
 	 	ElementImpl dao_courses = new ElementImpl();
 	 	dao_courses.ajouterElement(elt_tmp);
 	    liste_courses = dao_courses.consulter();
-	    return Response.status(200).entity(liste_courses).build();
+	    return Response.ok().entity(liste_courses)
+	            .header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+	             header("Access-Control-Allow-Credentials", "true").
+	             header("Access-Control-Max-Age", "3600").
+	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build(); 
     }
 	
-	@POST
+	@OPTIONS
+    @Path("/ajouter")
+    public Response autoriserOptioAjouter() {
+      	System.out.println("OPTIONS");
+        return Response.ok()
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+             header("Access-Control-Allow-Credentials", "true").
+             header("Access-Control-Max-Age", "3600").
+             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+    }
+	
+	@DELETE
 	@Path("/supprimer")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response supprimerElement(int idSupp) {
+	public Response supprimerElement(String idSupp) {
 		System.out.println(idSupp);
 		List liste_courses = new ArrayList<Element>();
 		Element e = new Element();
-		e.setIdElement(idSupp);
+		e.setIdElement(Integer.parseInt(idSupp));
 		ElementImpl dao_courses = new ElementImpl();
-		dao_courses.supprimer(idSupp);
+		dao_courses.supprimer(Integer.parseInt(idSupp));
 		liste_courses = dao_courses.consulter();
-		return Response.status(200).entity(liste_courses).build();
+		return Response.ok().entity(liste_courses)
+	            .header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+	             header("Access-Control-Allow-Credentials", "true").
+	             header("Access-Control-Max-Age", "3600").
+	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
 	}
 	
+	@OPTIONS
+    @Path("/supprimer")
+    public Response autoriserOptioSupprimer() {
+          System.out.println("OPTIONS");
+        return Response.ok()
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+             header("Access-Control-Allow-Credentials", "true").
+             header("Access-Control-Max-Age", "3600").
+             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+    }
+	
 	@POST
-	@Path("/maj")
+	@Path("/mettreAjour")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response mettreAjour(int idSupp) {
 		System.out.println(idSupp);
@@ -67,6 +109,23 @@ public class MesCoursesService {
 		ElementImpl dao_courses = new ElementImpl();
 		dao_courses.mettreAjour(idSupp);
 		liste_courses = dao_courses.consulter();
-		return Response.status(200).entity(liste_courses).build();
+		return Response.ok().entity(liste_courses)
+	            .header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+	             header("Access-Control-Allow-Credentials", "true").
+	             header("Access-Control-Max-Age", "3600").
+	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
 	}
+	
+	@OPTIONS
+    @Path("/mettreAjour")
+    public Response autoriserOptioMAJ() {
+          System.out.println("OPTIONS");
+        return Response.ok()
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+             header("Access-Control-Allow-Credentials", "true").
+             header("Access-Control-Max-Age", "3600").
+             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+    }
 }
