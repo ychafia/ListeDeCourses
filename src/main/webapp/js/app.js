@@ -5,7 +5,7 @@ var app = angular.module("myApp", []);
 * @ngdoc doc
 * @name Youness
 * @description
-* # Mescourses
+* # Mesourses
 *
 * Main module of the application.
 */
