@@ -15,7 +15,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import fr.youness.mescourses.bean.Element;
+import fr.youness.mescourses.bean.Utilisateur;
 import fr.youness.mescourses.dao.ElementImpl;
+import fr.youness.mescourses.dao.UtilisateurImpl;
 
 
 
@@ -121,6 +123,33 @@ public class MesCoursesService {
     @Path("/mettreAjour")
     public Response autoriserOptioMAJ() {
           System.out.println("OPTIONS");
+        return Response.ok()
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+             header("Access-Control-Allow-Credentials", "true").
+             header("Access-Control-Max-Age", "3600").
+             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+    }
+	
+	@PUT
+    @Path("/seConnecter")
+    @Consumes({MediaType.APPLICATION_JSON})
+	public Response seConnecter(Utilisateur u){
+		UtilisateurImpl dao_courses = new UtilisateurImpl();
+		boolean autoriser = false;
+		autoriser = dao_courses.seConnecter(u);
+		return Response.ok().entity(autoriser)
+	            .header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+	             header("Access-Control-Allow-Credentials", "true").
+	             header("Access-Control-Max-Age", "3600").
+	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+	}
+	
+	@OPTIONS
+    @Path("/seConnecter")
+    public Response autoriserOptioSeconnecter() {
+      	System.out.println("OPTIONS");
         return Response.ok()
             .header("Access-Control-Allow-Origin", "*")
             .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
