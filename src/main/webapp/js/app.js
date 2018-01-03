@@ -1,4 +1,3 @@
-var app = angular.module("myApp", []);
 'use strict';
  
 /**
@@ -9,4 +8,20 @@ var app = angular.module("myApp", []);
 *
 * Main module of the application.
 */
-angular.module("mesCoursesApp", []);
+angular.module('mesCoursesApp', ['ngRoute'])
+	.config(function($routeProvider) {
+        
+        // Système de routage
+        $routeProvider
+        .when('/', {
+            templateUrl: 'pages/auth.html',
+            controller: 'authCtrl'
+        })
+        .when('/mescourses', {
+            templateUrl: 'pages/mesCourses.html',
+            controller: 'coursesCtrl'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+});
