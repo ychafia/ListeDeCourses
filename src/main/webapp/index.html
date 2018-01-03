@@ -9,22 +9,22 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/auth.css">
 	
-	<body ng-app="mesCoursesApp" ng-controller="coursesCtrl">
+	<body ng-app="mesCoursesApp" ng-controller="authCtrl">
 		<section id="authent">
 			<div class="login-page">
 			  <div class="form">
-				<form ng-submit="seConnecter()" class="register-form">
+				<form class="register-form">
 				  <input type="text" placeholder="Identifiant"/>
 				  <input type="password" placeholder="Password"/>
 				  <input type="text" placeholder="Adresse email"/>
 				  <button>Créer</button>
 				  <p class="message">Mot de passe oublié <a href="#">Se connecter</a></p>
 				</form>
-				<form class="login-form">
+				<form ng-submit="seConnecter()" class="login-form">
 				  <input type="text" placeholder="Identifiant" ng-model="identifiant" />
 				  <input type="password" placeholder="Password" ng-model="password" />
 				  <button>login</button>
-				  <p class="message">Pas de compte encore ? <a href="#">Créer un compte</a></p>
+				  <p class="message">Pas de compte encore ? {{autoriser}}<a href="#">Créer un compte</a></p>
 				</form>
 			  </div>
 			</div>
@@ -32,7 +32,9 @@
 	</body>
 	<script src="js/app.js"></script>
 	<script src="js/controleurs/coursesCtrl.js"></script>
+	<script src="js/controleurs/authCtrl.js"></script>
 	<script src="js/services/coursesSave.js"></script>
+	<script src="js/services/serviceAuth.js"></script>
 	<script>
 		$('.message a').click(function(){
 		   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
