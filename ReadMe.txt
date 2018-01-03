@@ -1,7 +1,7 @@
 					Liste de courses
 
-Liste de courses est un projet personnel développé en AngularJS avec en back, un web service Restfull.
-Le but de ce projet est de monter en compétance sur le framework AngularJS.
+Liste de courses est un projet personnel dÃ©veloppÃ© en AngularJS, et en back, un web service Restfull.
+Le but de ce projet est de monter en compÃ©tance sur le framework AngularJS.
 
-Pour toutes question, n'hésitez pas à me contacter à @ suivante :
+Pour toutes question, n'hÃ©sitez pas Ã  me contacter Ã  @ suivante :
 chafiayouness@gmail.com
