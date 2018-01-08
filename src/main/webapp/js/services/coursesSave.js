@@ -1,6 +1,6 @@
 'use strict';
  
-angular.module('mesCoursesApp').factory('CoursesSave', ['$http', function ($http) {
+angular.module('Home').factory('CoursesSave', ['$http', function ($http) {
     return{
 		getMesCourses : function(){
 			return $http.get("http://192.168.1.17:8080/MesCoursesAPI/rest/json/mescourses/get");

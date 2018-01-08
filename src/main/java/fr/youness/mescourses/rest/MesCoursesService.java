@@ -35,8 +35,20 @@ public class MesCoursesService {
 	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
 	             header("Access-Control-Allow-Credentials", "true").
 	             header("Access-Control-Max-Age", "3600").
-	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();    
+	             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();    
 	}
+	
+	@OPTIONS
+    @Path("/get")
+    public Response autoriserOptioGet() {
+      	System.out.println("OPTIONS GET");
+        return Response.ok()
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
+             header("Access-Control-Allow-Credentials", "true").
+             header("Access-Control-Max-Age", "3600").
+             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
+    }
 	
 	@PUT
     @Path("/ajouter")
@@ -56,7 +68,7 @@ public class MesCoursesService {
 	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
 	             header("Access-Control-Allow-Credentials", "true").
 	             header("Access-Control-Max-Age", "3600").
-	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build(); 
+	             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build(); 
     }
 	
 	@OPTIONS
@@ -68,7 +80,7 @@ public class MesCoursesService {
             .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
              header("Access-Control-Allow-Credentials", "true").
              header("Access-Control-Max-Age", "3600").
-             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
     }
 	
 	@DELETE
@@ -87,7 +99,7 @@ public class MesCoursesService {
 	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
 	             header("Access-Control-Allow-Credentials", "true").
 	             header("Access-Control-Max-Age", "3600").
-	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+	             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
 	}
 	
 	@OPTIONS
@@ -99,7 +111,7 @@ public class MesCoursesService {
             .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
              header("Access-Control-Allow-Credentials", "true").
              header("Access-Control-Max-Age", "3600").
-             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
     }
 	
 	@POST
@@ -116,7 +128,7 @@ public class MesCoursesService {
 	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
 	             header("Access-Control-Allow-Credentials", "true").
 	             header("Access-Control-Max-Age", "3600").
-	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+	             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
 	}
 	
 	@OPTIONS
@@ -128,13 +140,14 @@ public class MesCoursesService {
             .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
              header("Access-Control-Allow-Credentials", "true").
              header("Access-Control-Max-Age", "3600").
-             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
     }
 	
 	@PUT
     @Path("/seConnecter")
     @Consumes({MediaType.APPLICATION_JSON})
 	public Response seConnecter(Utilisateur u){
+		System.out.println("PUT seConnecter");
 		UtilisateurImpl dao_courses = new UtilisateurImpl();
 		boolean autoriser = false;
 		autoriser = dao_courses.seConnecter(u);
@@ -143,18 +156,18 @@ public class MesCoursesService {
 	            .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
 	             header("Access-Control-Allow-Credentials", "true").
 	             header("Access-Control-Max-Age", "3600").
-	             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+	             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
 	}
 	
 	@OPTIONS
     @Path("/seConnecter")
     public Response autoriserOptioSeconnecter() {
-      	System.out.println("OPTIONS");
+      	System.out.println("OPTIONS seConnecter");
         return Response.ok()
             .header("Access-Control-Allow-Origin", "*")
             .header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS, HEAD").
              header("Access-Control-Allow-Credentials", "true").
              header("Access-Control-Max-Age", "3600").
-             header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+             header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With").build();
     }
 }

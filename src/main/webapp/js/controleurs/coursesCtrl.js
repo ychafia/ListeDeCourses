@@ -1,9 +1,10 @@
 
-angular.module('mesCoursesApp').controller('coursesCtrl', ['$scope', '$http', 'CoursesSave', function($scope, $http, CoursesSave) {
-	console.log("APICourses prête à lancer ...");
+angular.module('Home').controller('coursesCtrl', ['$scope', '$rootScope', '$http', 'CoursesSave', function($scope, $rootScope, $http, CoursesSave) {
+	
 	CoursesSave.getMesCourses().success(function(data){
 		$scope.elements = data;
 	});
+	
 	$scope.ajouterElement = function(){
 		//Construction de l'objet ? poster
 		var obj_elt = {
@@ -14,7 +15,7 @@ angular.module('mesCoursesApp').controller('coursesCtrl', ['$scope', '$http', 'C
 		CoursesSave.saveElement(obj_elt).then(function(response) {
 			$scope.elements = response.data;
 			$scope.element_libelle = '';
-			console.log('Ajouté avec succés');
+			console.log('Ajoutï¿½ avec succÃ©s');
 		}, function(response) {
 			console.log( "Erreur lors de l'ajout de l'element: " + JSON.stringify({data: response}));
 		});
@@ -23,7 +24,7 @@ angular.module('mesCoursesApp').controller('coursesCtrl', ['$scope', '$http', 'C
 		CoursesSave.deleteElement(idSupp)
 	    .then(function(response) {
 			$scope.elements = response.data;	
-			console.log('Supprimé avec succés');
+			console.log('Supprimï¿½ avec succï¿½s');
 		}, function(response) {
 			console.log( "Erreur lors de l'ajout de l'element: " + JSON.stringify({data: response}));
 		});
@@ -32,16 +33,16 @@ angular.module('mesCoursesApp').controller('coursesCtrl', ['$scope', '$http', 'C
 		CoursesSave.mettreAjourElement(elt.idElement)
 		.then(function(response) {
 			//$scope.elements = response.data;	
-			console.log('MAJ avec succés');
+			console.log('MAJ avec succï¿½s');
 		}, function(response) {
 			console.log( "Erreur lors de l'ajout de l'element: " + JSON.stringify({data: response}));
 		});
 		
 		/*CoursesSave.mettreAjourElement(elt.idElement).success(function(data){
-			console.log('MAJ avec succés ');
+			console.log('MAJ avec succï¿½s ');
 		}).error(function(data, status, headers, config) {
                console.log( "Erreur lors de l'ajout de l'element: " + JSON.stringify({data: data}));
-               alert("Erreur grave : l'élément n'a pas été ajouté.");
+               alert("Erreur grave : l'ï¿½lï¿½ment n'a pas ï¿½tï¿½ ajoutï¿½.");
         });*/
 	};
 }]);
