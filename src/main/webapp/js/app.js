@@ -37,13 +37,12 @@ angular.module('mesCoursesApp', ['Authentication', 'Home', 'ngRoute', 'ngCookies
         $rootScope.globals = $cookieStore.get('globals') || {};
 		
         if ($rootScope.globals.currentUser) {
-			console.log($rootScope.globals.currentUser);
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         }
- 
+        
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
-            if (!$rootScope.globals.currentUser) {
+        	if ($location.path() !== '/' && !$rootScope.globals.currentUser) {
                 $location.path('/');
             }
         });
