@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
  
 /**
 * @ngdoc doc
@@ -39,10 +39,10 @@ angular.module('mesCoursesApp', ['Authentication', 'Home', 'ngRoute', 'ngCookies
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         }
-        
+ 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
-        	if ($location.path() !== '/' && !$rootScope.globals.currentUser) {
+            if ($location.path() !== '/' && !$rootScope.globals.currentUser) {
                 $location.path('/');
             }
         });

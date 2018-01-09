@@ -1,11 +1,12 @@
-
+﻿
 angular.module('Authentication').controller('authCtrl', ['$scope', '$http', 'serviceAuth', '$location', function($scope, $http, serviceAuth, $location) {
 	console.log("APICourses prête à lancer ...");
 	
 	serviceAuth.ClearCredentials();
+	$scope.error = false;
 	
 	$scope.seConnecter = function(){
-		//Construction de l'objet ? poster
+		//Construction de l'objet à poster
 		var obj_elt = {
 			identifiant : $scope.identifiant,
 			motDePasse : $scope.password
@@ -19,6 +20,7 @@ angular.module('Authentication').controller('authCtrl', ['$scope', '$http', 'ser
 			}
 			else{
 				$scope.password = '';
+				$scope.error = true;
 				$location.path('/')
 			}
 			console.log($scope.autoriser);

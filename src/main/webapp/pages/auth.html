@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html>
 	<head>
 		<title>Liste de courses</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 	<link rel="stylesheet" href="css/auth.css">
 	
@@ -13,16 +14,17 @@
 				  <input type="text" placeholder="Identifiant"/>
 				  <input type="password" placeholder="Password"/>
 				  <input type="text" placeholder="Adresse email"/>
-				  <button>Créer</button>
-				  <p class="message">Mot de passe oublié <a href="#">Se connecter</a></p>
+				  <button>CrÃ©er</button>
+				  <p class="message">Mot de passe oubliÃ© <a href="#">Se connecter</a></p>
 				</form>
 				<form ng-submit="seConnecter()" class="login-form">
+				  <div ng-show="error" class="alert alert-danger">Identifiant/mot de passe est incorrecte</div>
 				  <input type="text" placeholder="Identifiant" ng-model="identifiant"required/>
 				  <span ng-show="form.Identifiant.$dirty && form.Identifiant.$error.required" class="help-block">Identifiant is required</span>
 				  <input type="password" placeholder="Password" ng-model="password" required/>
 				  <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
 				  <button>login</button>
-				  <p class="message">Pas de compte encore ? {{autoriser}}<a href="#">Créer un compte</a></p>
+				  <p class="message">Pas de compte encore ? {{autoriser}}<a href="#">CrÃ©er un compte</a></p>
 				</form>
 			  </div>
 			</div>

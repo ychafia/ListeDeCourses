@@ -1,6 +1,6 @@
-'use strict';
+﻿'use strict';
  
-angular.module('Authentication').factory('serviceAuth', ['Base64', '$http', '$rootScope', '$cookieStore', function (Base64, $http, $rootScope, $cookieStore) {
+angular.module('Authentication').factory('serviceAuth', ['Base64', '$http', '$rootScope', '$cookieStore', '$cookies', function (Base64, $http, $rootScope, $cookieStore, $cookies) {
     var service = {};
 		service.seConnecter = function(obj_elt){
 			return $http({
@@ -19,9 +19,11 @@ angular.module('Authentication').factory('serviceAuth', ['Base64', '$http', '$ro
                     authdata: authdata
                 }
             };
- 
+			var expireDate = new Date();
+			expireDate.setMinutes(expireDate.getMinutes() + 1);
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-            $cookieStore.put('globals', $rootScope.globals);
+			
+            $cookieStore.put('globals', $rootScope.globals, {expires: expireDate});
         },
 		
 		service.ClearCredentials = function () {
@@ -35,7 +37,7 @@ angular.module('Authentication').factory('serviceAuth', ['Base64', '$http', '$ro
 .factory('Base64', function () {
     /* jshint ignore:start */
  
-    var keyStr = 'cle+/=';
+    var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
  
     return {
         encode: function (input) {
