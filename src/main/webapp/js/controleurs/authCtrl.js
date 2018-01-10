@@ -1,5 +1,5 @@
 ﻿
-angular.module('Authentication').controller('authCtrl', ['$scope', '$http', 'serviceAuth', '$location', function($scope, $http, serviceAuth, $location) {
+angular.module('Authentication').controller('authCtrl', ['$scope', '$rootScope', '$http', 'serviceAuth', '$location', function($scope, $rootScope, $http, serviceAuth, $location) {
 	console.log("APICourses prête à lancer ...");
 	
 	serviceAuth.ClearCredentials();
@@ -16,9 +16,11 @@ angular.module('Authentication').controller('authCtrl', ['$scope', '$http', 'ser
 			$scope.autoriser = response.data;
 			if($scope.autoriser == true){
 				serviceAuth.SetCredentials($scope.identifiant, $scope.password);
+				$rootScope.isConnected = true;
 				$location.path('/mescourses');
 			}
 			else{
+				$rootScope.isConnected = false;
 				$scope.password = '';
 				$scope.error = true;
 				$location.path('/')

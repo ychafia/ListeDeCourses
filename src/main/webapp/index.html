@@ -7,8 +7,17 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	
 	<link rel="stylesheet" href="css/auth.css">
+	<link rel="stylesheet" href="css/nav.css">
 	
 	<body>
+		<ul>
+			<li><a  ng-if="!isConnected" class="active" href="#/">Se connecter</a></li>
+			<li><a  ng-if="isConnected" class="active" href="#/">Se déconnecter</a></li>
+			<li><a href="#/mescourses">Mes courses</a></li>
+			<li><a href="#/contact">Bloc notes</a></li>
+			<li><a href="#/agenda">Agenda</a></li>
+			<li><a href="#/about">A propos</a></li>
+		</ul>
 		<div ng-view>
         </div>
 		

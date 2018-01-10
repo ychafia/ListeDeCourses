@@ -37,6 +37,7 @@ angular.module('mesCoursesApp', ['Authentication', 'Home', 'ngRoute', 'ngCookies
         $rootScope.globals = $cookieStore.get('globals') || {};
 		
         if ($rootScope.globals.currentUser) {
+			$rootScope.isConnected = true;
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         }
  
