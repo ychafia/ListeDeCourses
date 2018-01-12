@@ -27,6 +27,7 @@ angular.module('Authentication').factory('serviceAuth', ['Base64', '$http', '$ro
         },
 		
 		service.ClearCredentials = function () {
+			$rootScope.isConnected = false;
             $rootScope.globals = {};
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
@@ -37,7 +38,7 @@ angular.module('Authentication').factory('serviceAuth', ['Base64', '$http', '$ro
 .factory('Base64', function () {
     /* jshint ignore:start */
  
-    var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    var keyStr = 'cle+/=';
  
     return {
         encode: function (input) {

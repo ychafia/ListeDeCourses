@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.form1 {
+  /*position: relative;*/
+  background: #FFFFFF;
+  width: 70%;
+ 
+  margin-left: 13%;
+  margin-bottom: 8%;
+  padding: 10px;
+}
+
+.form2 {
+  background: #FFFFFF;
+  width: 70%;
+  margin-left: 13%;
+  margin-bottom: 8%;
+  padding: 10px;
+}
+
+.form3 {
+  background: #FFFFFF;
+  width: 70%;
+  margin-left: 13%;
+  margin-bottom: 8%;
+  padding: 10px;
+}
+
+.form4 {
+  background: #FFFFFF;
+  width: 70%;
+  margin-left: 13%;
+  margin-bottom: 8%;
+  padding: 10px;
+}
+
+.paragraphes {
+	color: #d9542c;
+	font-weight: Bold;
+}
+
+hr {
+	display: block;
+	clear: both;
+	height: 0;
+	margin: 10px 500px 0px 0px;
+	padding: 0;
+	border: 1;
+	font-family: arial;
+	font-size: 90px;
+	line-height: 1;
+	border-top: 2px solid #d9542c;
+}
+
+table, td {
+	margin-top:20px;
+	margin-left: 20px;
+	/*background-color:#4d4a49;
+	border: 1px solid black;*/
+}
+
+.montr {
+	margin-top: 20px;
+}
+
+.tdtitre {
+	padding-left:10px;
+	width:250px;
+	height:30px;
+	color:#000000;
+	font-weight: Bold;
+}
+
+.tddetails {
+	padding-left:70px;
+	width:600px;
+	height:30px;
+	color:#979292;
+}
+
+
+.tdtitreformations {
+	padding-left:10px;
+	width:850px;
+	height:30px;
+	color:#000000;
+	font-weight: Bold;
+}
+
+.spanuniversites {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.pagination {
+	margin-top: 100px;
+	margin-left: 13%;
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.spansociete {
+	color: #C2C0C0;
+}
+
+.contexteMission {
+	color: #070707;
+	padding-top:20px;
+}
+
+.roleMission {
+	padding-top:20px;
+}
+
+.titreMissions {
+	padding-top:20px;
+}
+
+.detailsMissions {
+	color: #070707;
+	padding-top:20px;
+}

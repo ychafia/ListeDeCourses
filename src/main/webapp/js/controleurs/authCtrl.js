@@ -1,5 +1,5 @@
 ﻿
-angular.module('Authentication').controller('authCtrl', ['$scope', '$rootScope', '$http', 'serviceAuth', '$location', function($scope, $rootScope, $http, serviceAuth, $location) {
+angular.module('Authentication').controller('authCtrl', ['$scope', '$rootScope', 'Base64', '$http', 'serviceAuth', '$location', function($scope, $rootScope, Base64, $http, serviceAuth, $location) {
 	console.log("APICourses prête à lancer ...");
 	
 	serviceAuth.ClearCredentials();
@@ -7,9 +7,11 @@ angular.module('Authentication').controller('authCtrl', ['$scope', '$rootScope',
 	
 	$scope.seConnecter = function(){
 		//Construction de l'objet à poster
+		var authdata = Base64.encode($scope.identifiant + ':' + $scope.password);
+		
 		var obj_elt = {
 			identifiant : $scope.identifiant,
-			motDePasse : $scope.password
+			motDePasse : authdata
 		};
 		
 		serviceAuth.seConnecter(obj_elt).then(function(response) {
